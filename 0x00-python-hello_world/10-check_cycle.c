@@ -10,24 +10,18 @@ int check_cycle(listint_t *list)
 {
 	listint_t *ptr_s, *ptr_f;
 
-	if (head == NULL || head->next == NULL)
+	if (list == NULL || list->next == NULL)
 		return (0);
 	ptr_s = list->next;
 	ptr_f = list->next->next;
-	while (ptr_f)
+	while (ptr_s && ptr_f)
 	{
 		if (ptr_s == ptr_f)
 		{
-			ptr_s = head;
-			while (ptr_s != ptr_f)
-			{
-				ptr_s = ptr_s->next;
-				ptr_f = ptr_f->next;
-			}
-			return (ptr_s);
+			return (1);
 		}
 		ptr_s = ptr_s->next;
 		ptr_f = ptr_f->next->next;
 	}
-	return (NULL);
+	return (0);
 }
