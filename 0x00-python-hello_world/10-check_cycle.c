@@ -10,7 +10,7 @@ int check_cycle(listint_t *list)
 {
 	listint_t *ptr_s, *ptr_f;
 
-	if (!list || !list->next)
+	if (!list)
 		return (0);
 	ptr_s = list;
 	ptr_f = list;
