@@ -7,3 +7,5 @@ while i > 64:
         i -= 33
     else:
         i += 31
+    if i == 96:
+        break
