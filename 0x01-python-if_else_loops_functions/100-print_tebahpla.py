@@ -1,12 +1,9 @@
 #!/usr/bin/python3
 i = 122
 while i > 64:
-    if i == 65:
-        print(chr(i), end='')
-        break
-    if i > 96:
-        print(chr(i), end='')
+    char = chr(i)
+    print("{}".format(char), end='')
+    if i % 2 == 0:
         i -= 33
     else:
-        print(chr(i), end='')
         i += 31
