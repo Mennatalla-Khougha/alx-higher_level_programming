@@ -8,8 +8,8 @@ if __name__ == '__main__':
 
     if argc != 4:
         print('Usage: ./100-my_calculator.py <a> <operator> <b>')
-        exit(1)
-    a = int(arga[1])
+        sys.exit(1)
+    a = int(args[1])
     op = args[2]
     b = int(args[3])
     result = 0
@@ -23,5 +23,5 @@ if __name__ == '__main__':
         result = div(a, b)
     else:
         print('Unknown operator. Available operators: +, -, * and /')
-        exit(1)
+        sys.exit(1)
     print(f"{a:d} {op} {b:d} = {result:d}")
