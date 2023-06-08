@@ -9,7 +9,7 @@ if __name__ == '__main__':
     if argc != 4:
         print('Usage: ./100-my_calculator.py <a> <operator> <b>')
         exit(1)
-    a = int(arga[1)]
+    a = int(arga[1])
     op = args[2]
     b = int(args[3])
     result = 0
