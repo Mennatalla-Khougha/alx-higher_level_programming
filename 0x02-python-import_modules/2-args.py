@@ -8,7 +8,10 @@ if __name__ == '__main__':
     if argc == 1:
         print('0 arguments.')
     else:
-        print(f"{argc - 1} arguments:")
+        if argc == 2:
+            print('1 argument:')
+        else:
+            print(f"{argc - 1:d} arguments:")
         for i, c in enumerate(args):
             if i == 0:
                 continue
