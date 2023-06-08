@@ -1,4 +1,4 @@
-#!/usr/bin/python3.8
+#!/usr/bin/python3
 if __name__ == '__main__':
     import hidden_4
 
@@ -6,4 +6,4 @@ if __name__ == '__main__':
     for c in names:
         if c[:2]:
             continue
-        print(f'{c}')
+        print(c)
