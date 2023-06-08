@@ -3,7 +3,7 @@ if __name__ == '__main__':
     import sys
 
     args = sys.argv
-    result = 0;
+    result = 0
     for i, c in enumerate(args):
         if i == 0:
             continue
