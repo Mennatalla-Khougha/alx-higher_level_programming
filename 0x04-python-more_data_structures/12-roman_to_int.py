@@ -1,22 +1,20 @@
 #!/usr/bin/python3
 def roman_to_int(roman_string):
-    sum = 0
-    if not roman_number:
-        return num
-
-    for c in roman_number:
-        if c == 'I':
-            sum += 1
-        elif c == 'V':
-            sum += 5
-        elif c == 'X':
-            sum += 10
-        elif c == 'L':
-            sum += 50
-        elif c == 'C':
-            sum += 100
-        elif c == 'D':
-            sum += 500
-        elif c == 'M':
-            sum += 1000
-    return sum
+    if roman_string is None or not isinstance(roman_string, str):
+        return 0
+    roman_dict = {
+            'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100,
+            'D': 500, 'M': 1000
+            }
+    num = 0
+    prev = 0
+    for c in reversed(roman_number):
+        if c not in roman_dict:
+            return 0
+        value = roman_dict[c]
+        if value >= prev:
+            num += value
+        else:
+            num -= value
+        prev = value
+    return num
