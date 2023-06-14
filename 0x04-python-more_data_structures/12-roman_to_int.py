@@ -8,7 +8,7 @@ def roman_to_int(roman_string):
             }
     num = 0
     prev = 0
-    for c in reversed(roman_number):
+    for c in reversed(roman_string):
         if c not in roman_dict:
             return 0
         value = roman_dict[c]
