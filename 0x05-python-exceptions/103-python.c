@@ -48,7 +48,7 @@ void print_python_bytes(PyObject *p)
 void print_python_float(PyObject *p)
 {
 	setbuf(stdout, NULL);
-	if (!PyFloat_Check(p));
+	if (!PyFloat_Check(p))
 	{
 		printf("[ERROR] Invalid Bytes Object\n");
 		return;
