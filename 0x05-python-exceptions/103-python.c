@@ -5,6 +5,10 @@ void print_python_list(PyObject *p);
 void print_python_bytes(PyObject *p);
 void print_python_float(PyObject *p);
 
+/**
+ * print_python_list - print python list info
+ * @p: python list
+ */
 void print_python_list(PyObject *p)
 {
 	setbuf(stdout, NULL);
@@ -30,6 +34,10 @@ void print_python_list(PyObject *p)
 	}
 }
 
+/**
+ * print_python_bytes - print python bytes info
+ * @p: python byte
+ */
 void print_python_bytes(PyObject *p)
 {
 	Py_ssize_t size, i;
@@ -57,6 +65,10 @@ void print_python_bytes(PyObject *p)
 	printf("\n");
 }
 
+/**
+ * print_python_float - print python float info
+ * @p: python float
+ */
 void print_python_float(PyObject *p)
 {
 	setbuf(stdout, NULL);
