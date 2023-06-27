@@ -21,11 +21,11 @@ void print_python_list(PyObject *p)
 
 	for (i = 0; i < size; i++)
 	{
-		char *type = ((PyListObject *)p)->ob_item[i]->ob_type->tp_name;
+		const char *type = ((PyListObject *)p)->ob_item[i]->ob_type->tp_name;
 		printf("Element %ld: %s\n", i, type);
-		if (PyBytes_Check(((PyListObject *)p)->ob_item[i])
+		if (PyBytes_Check(((PyListObject *)p)->ob_item[i]))
 			print_python_bytes(((PyListObject *)p)->ob_item[i]);
-		else if (PyFloat_Check(((PyListObject *)p)->ob_item[i])
+		else if (PyFloat_Check(((PyListObject *)p)->ob_item[i]))
 			print_python_float(((PyListObject *)p)->ob_item[i]);
 	}
 }
@@ -66,5 +66,5 @@ void print_python_float(PyObject *p)
 		printf("[ERROR] Invalid Float Object\n");
 		return;
 	}
-	printf("  Value: %ilf\n", ((PyFloatObject *)p)->ob_fval);
+	printf("  Value: %lf\n", ((PyFloatObject *)p)->ob_fval);
 }
