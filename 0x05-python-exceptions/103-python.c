@@ -81,6 +81,6 @@ void print_python_float(PyObject *p)
 		return;
 	}
 	buff = PyOS_double_to_string(((PyFloatObject *)p)->ob_fval, 'r', 0, Py_DTSF_ADD_DOT_0, NULL);
-	printf("  Value: %lf\n", buff);
+	printf("  Value: %s\n", buff);
 	PyMem_Free(buff);
 }
