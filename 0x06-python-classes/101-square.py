@@ -80,7 +80,7 @@ class Square:
     def __str__(self):
         """Define the print representation of a square"""
         if self.size == 0:
-            print("")
+            return ""
         else:
             for k in range(self.position[1]):
                 print("")
