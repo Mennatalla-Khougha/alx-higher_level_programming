@@ -1,6 +1,5 @@
 #include <Python.h>
 #include <stdio.h>
-#include <string.h>
 
 void print_python_list(PyObject *p);
 void print_python_bytes(PyObject *p);
@@ -64,7 +63,7 @@ void print_python_float(PyObject *p)
 	printf("[.] float object info\n");
 	if (!PyFloat_Check(p))
 	{
-		printf("[ERROR] Invalid Bytes Object\n");
+		printf("[ERROR] Invalid Float Object\n");
 		return;
 	}
 	printf("  Value: %f\n", ((PyFloatObject *)p)->ob_fval);
