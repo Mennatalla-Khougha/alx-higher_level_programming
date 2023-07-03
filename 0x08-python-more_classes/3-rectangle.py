@@ -72,9 +72,12 @@ class Rectangle:
             str: string representation of the rectangle
         """
         result = ""
-        for i in range(self.height):
-            for j in range(self.width):
-                result += "#"
-            if i != self.height - 1:
-                result += "\n"
+        if self.width == 0 or self.height == 0:
+            result = ""
+        else:
+            for i in range(self.height):
+                for j in range(self.width):
+                    result += "#"
+                if i != self.height - 1:
+                    result += "\n"
         return result
