@@ -1,5 +1,13 @@
 #!/usr/bin/python3
-magic_string = __import__('100-magic_string').magic_string
+copy_list = __import__('19-copy_list').copy_list
 
-for i in range(10):
-    print(magic_string())
+my_list = [1, 2, 3]
+print(my_list)
+
+new_list = copy_list(my_list)
+
+print(my_list)
+print(new_list)
+
+print(new_list == my_list)
+print(new_list is my_list)
