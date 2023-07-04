@@ -1,4 +1,2 @@
 262
-A glimpse NSMALLPOSINTS, NSMALLNEGINTS:
-These two macros are actually an array of 262 integers (most commonly used). And this structure is basically used to access these integers fast. They get allocated right when you initialize your NSMALLPOSINTS and NSMALLNEGINTS.
 https://www.linkedin.com/pulse/python3-mutable-immutable-everything-object-chatti-iheb/
