@@ -1,0 +1,47 @@
+>>> add_integer = __import__('0-add_integer').add_integer
+
+# adding 2 integers
+>>> add_integer(2, 3)
+5
+>>> add_integer(0, 0)
+0
+>>> add_integer(-2, 3)
+1
+>>> add_integer(2, -3)
+-1
+
+# add only one input
+>>> add_integer(2)
+100
+
+# adding with float
+>>> add_integer(3.5, 1)
+4
+>>> add_integer(3.5, 4.12)
+7
+
+# adding a string to an integer
+>>> add_integer("sjgnl", 5)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+# adding a boolean
+>>> add_integer(True)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+# adding a list 
+>>> add_integer([1, 2, 3])
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+# adding a dictionary
+>>> add_integer({"a": 1, "b": 2})
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+# adding with None
+>>> add_integer(1, None)
+Traceback (most recent call last):
+TypeError: b must be an integer
+

@@ -1,0 +1,55 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text = 'This is a simple sentence.'
+>>> text_indentation(text)
+This is a simple sentence.
+<BLANKLINE>
+
+>>> text = 'This is a simple sentence. This is another sentence.'
+>>> text_indentation(text)
+This is a simple sentence.
+<BLANKLINE>
+This is another sentence.
+<BLANKLINE>
+
+>>> text = ''
+>>> text_indentation(text)
+
+>>> text = '    '
+>>> text_indentation(text)
+
+ >>> text = '...:::!!!'
+>>> text_indentation(text)
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+:
+<BLANKLINE>
+:
+<BLANKLINE>
+:
+<BLANKLINE>
+!!!
+
+>>> text = 'This is a    test:'
+>>> text_indentation(text)
+This is a    test:
+<BLANKLINE>
+
+>>> text = '...This is a test sentence!...'
+>>> text_indentation(text)
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+This is a test sentence!.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
