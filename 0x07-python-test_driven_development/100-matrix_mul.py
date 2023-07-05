@@ -16,10 +16,10 @@ def matrix_mul(m_a, m_b):
         list: the resulting matrix of the multiplication
     """
     if not isinstance(m_a, list):
-        raise TypeError("m_a must be list")
+        raise TypeError("m_a must be a list")
 
     if not isinstance(m_b, list):
-        raise TypeError("m_b must be list")
+        raise TypeError("m_b must be a list")
 
     for row in m_a:
         if not isinstance(row, list):

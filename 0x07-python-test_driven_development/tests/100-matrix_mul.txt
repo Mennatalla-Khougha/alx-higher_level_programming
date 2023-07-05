@@ -35,3 +35,7 @@ ValueError: m_a and m_b can't be multiplied
 >>> matrix_mul([1, 2.5], [3, 5.5])
 Traceback (most recent call last):
 TypeError: m_a must be a list of lists
+
+>>> matrix_mul("hello", "khougha")
+Traceback (most recent call last):
+TypeError: m_a must be a list
