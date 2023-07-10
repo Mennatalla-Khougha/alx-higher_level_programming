@@ -5,8 +5,6 @@
 class BaseGeometry:
     """A class baseGeometry
     """
-    def __init__(self):
-        pass
 
     def area(self):
         """Not implemented"""

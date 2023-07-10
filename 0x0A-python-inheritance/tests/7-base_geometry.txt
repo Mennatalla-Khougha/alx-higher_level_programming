@@ -2,21 +2,21 @@
 
 >>> bg = BaseGeometry(None)
 Traceback (most recent call last):
-TypeError: object() takes no parameters
+TypeError: BaseGeometry() takes no arguments
 
 >>> bg = BaseGeometry()
 >>> type(bg)
 <class '7-base_geometry.BaseGeometry'>
 
 >>> bg = BaseGeometry()
->>> print(bg.area)
+>>> bg.area()
 Traceback (most recent call last):
 Exception: area() is not implemented
 
 >>> bg = BaseGeometry()
 >>> bg.integer_validator('name', 'value')
 Traceback (most recent call last):
-TypeError: invalid number must be an integer
+TypeError: name must be an integer
 
 >>> bg = BaseGeometry()
 >>> bg.integer_validator('name', -3)
