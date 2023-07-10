@@ -8,6 +8,10 @@
 >>> my_list.print_sorted()
 []
 
+>>> my_list = MyList([5])
+>>> my_list.print_sorted()
+[5]
+
 >>> my_list = MyList([3, 1, 2, 3, 2])
 >>> my_list.print_sorted()
 [1, 2, 2, 3, 3]
@@ -23,3 +27,6 @@
 >>> print(original_list)
 [3, 1, 2]
 
+>>> my_list = MyList()
+>>> type(my_list)
+<class '1-my_list.MyList'>
