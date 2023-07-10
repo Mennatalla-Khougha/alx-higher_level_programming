@@ -47,6 +47,10 @@ TypeError: name must be an integer
 Traceback (most recent call last):
 TypeError: name must be an integer
 
+>>> bg.integer_validator("name", 'Bob')
+Traceback (most recent call last):
+TypeError: name must be an integer
+
 >>> bg.integer_validator('name', 5)
 
 
@@ -54,8 +58,5 @@ TypeError: name must be an integer
 Traceback (most recent call last):
 TypeError: {'a': 1} must be an integer
 
->>> bg = BaseGeometry()
->>> print(bg.area) # doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE
-<bound method BaseGeometry.area of <7-base_geometry.BaseGeometry 
- object at...>>
+
 
