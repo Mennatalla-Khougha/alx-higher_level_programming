@@ -4,7 +4,8 @@ import sys
 
 
 file_size = 0
-status_count = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+status_count = {}
+codes = [200, 301, 400, 401, 403, 404, 405, 500]
 line_count = 0
 
 for line in sys.stdin:
@@ -16,8 +17,11 @@ for line in sys.stdin:
         pass
     try:
         status_code = int(parts[-2])
-        if status_code in status_count:
-            status_count[status_code] += 1
+        if status_code in codes:
+            if status_count.get(status_code, -1) == -1:
+                status_count[status_code] = 1
+            else:
+                status_count[status_code] += 1
     except IndexError:
         pass
     if line_count % 10 == 0 or KeyboardInterrupt:
