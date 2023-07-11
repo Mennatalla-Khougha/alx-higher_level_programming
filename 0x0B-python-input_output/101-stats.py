@@ -20,7 +20,7 @@ for line in sys.stdin:
             status_count[status_code] += 1
     except IndexError:
         pass
-    if line_count % 10 == 0 or KeyboardInterrupt:
+    if line_count == 10 or KeyboardInterrupt:
         print("File size: {}".format(file_size))
         for code in sorted(status_count.keys()):
             if status_count[code] > 0:
