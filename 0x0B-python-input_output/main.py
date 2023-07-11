@@ -1,5 +1,12 @@
 #!/usr/bin/python3
-read_file = __import__('0-read_file').read_file
+MyClass = __import__('8-my_class').MyClass
+class_to_json = __import__('8-class_to_json').class_to_json
 
-read_file("my_file_0.txt")
+m = MyClass("John")
+m.win()
+print(type(m))
+print(m)
 
+mj = class_to_json(m)
+print(type(mj))
+print(mj)
