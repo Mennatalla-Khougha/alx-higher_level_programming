@@ -28,3 +28,4 @@ except KeyboardInterrupt:
     for code in sorted(status_count.keys()):
         if status_count[code] > 0:
             print("{}: {}".format(code, status_count[code]))
+    raise
