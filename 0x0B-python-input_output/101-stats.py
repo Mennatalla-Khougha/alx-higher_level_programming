@@ -10,11 +10,6 @@ line_count = 0
 
 try:
     for line in sys.stdin:
-        if line_count % 10 == 0:
-            print("File size: {}".format(file_size))
-            for code in sorted(status_count.keys()):
-                if status_count[code] > 0:
-                    print("{}: {}".format(code, status_count[code]))
         line_count += 1
         parts = line.split()
         try:
@@ -30,10 +25,11 @@ try:
                     status_count[status_code] += 1
         except IndexError:
             pass
-        print("File size: {}".format(file_size))
-        for code in sorted(status_count.keys()):
-            if status_count[code] > 0:
-                print("{}: {}".format(code, status_count[code]))
+        if line_count % 10 == 0:
+            print("File size: {}".format(file_size))
+            for code in sorted(status_count.keys()):
+                if status_count[code] > 0:
+                    print("{}: {}".format(code, status_count[code]))
 except KeyboardInterrupt:
     print("File size: {}".format(file_size))
     for code in sorted(status_count.keys()):
