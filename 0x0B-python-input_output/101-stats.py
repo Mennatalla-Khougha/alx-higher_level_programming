@@ -11,7 +11,10 @@ try:
     for line in sys.stdin:
         line_count += 1
         parts = line.split()
-        file_size += int(parts[-1])
+        try:
+            file_size += int(parts[-1])
+        except (IndexError, ValueError):
+            pass
         status_code = int(parts[-2])
         if status_code in status_count:
             status_count[status_code] += 1
