@@ -9,6 +9,11 @@ codes = [200, 301, 400, 401, 403, 404, 405, 500]
 line_count = 0
 
 for line in sys.stdin:
+    if line_count % 10 == 0 or KeyboardInterrupt:
+        print("File size: {}".format(file_size))
+        for code in sorted(status_count.keys()):
+            if status_count[code] > 0:
+                print("{}: {}".format(code, status_count[code]))
     line_count += 1
     parts = line.split()
     try:
@@ -24,8 +29,7 @@ for line in sys.stdin:
                 status_count[status_code] += 1
     except IndexError:
         pass
-    if line_count % 10 == 0 or KeyboardInterrupt:
-        print("File size: {}".format(file_size))
-        for code in sorted(status_count.keys()):
-            if status_count[code] > 0:
-                print("{}: {}".format(code, status_count[code]))
+    print("File size: {}".format(file_size))
+    for code in sorted(status_count.keys()):
+        if status_count[code] > 0:
+            print("{}: {}".format(code, status_count[code]))
