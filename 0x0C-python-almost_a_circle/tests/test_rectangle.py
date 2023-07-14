@@ -100,10 +100,70 @@ class TestRectangle_validator(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, 'width must be an integer'):
             Rectangle(None, 5)
 
+    def test_float_width(self):
+        with self.assertRaisesRegex(TypeError, 'width must be an integer'):
+            Rectangle(5.5, 5)
+
     def test_bool_height(self):
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
             Rectangle(5, True)
 
+    def test_dict_height(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            Rectangle(5, {2: 5})
+
+    def test_str_x(self):
+        with self.assertRaisesRegex(TypeError, 'x must be an integer'):
+            Rectangle(5, 10, 'HI')
+
+    def test_set_x(self):
+        with self.assertRaisesRegex(TypeError, 'x must be an integer'):
+            Rectangle(5, 10, {1, 2, 3})
+
+    def test_list_y(self):
+        with self.assertRaisesRegex(TypeError, 'y must be an integer'):
+            Rectangle(5, 10, 22, [1, 2, 3])
+
+    def test_range_y(self):
+        with self.assertRaisesRegex(TypeError, 'y must be an integer'):
+            Rectangle(5, 10, 22, range(3))
+
+    def test_0_width(self):
+        with self.assertRaisesRegex(ValueError, 'width must be > 0'):
+            Rectangle(0, 5)
+
     def test_negative_width(self):
         with self.assertRaisesRegex(ValueError, 'width must be > 0'):
-            Rectangle(-5, 5)
+            Rectangle(-1, 5)
+
+    def test_0_height(self):
+        with self.assertRaisesRegex(ValueError, 'height must be > 0'):
+            Rectangle(5, 0)
+
+    def test_negative_height(self):
+        with self.assertRaisesRegex(ValueError, 'height must be > 0'):
+            Rectangle(5, -5)
+
+    def test_negative_x(self):
+        with self.assertRaisesRegex(ValueError, 'x must be >= 0'):
+            Rectangle(2, 5, -3)
+
+    def test_negative_y(self):
+        with self.assertRaisesRegex(ValueError, 'y must be >= 0'):
+            Rectangle(2, 5, 3, -2)
+
+    def test_error_height(self):
+        with self.assertRaisesRegex(TypeError, 'height must be an integer'):
+            Rectangle(5, None, 'Hi')
+
+    def test_error2_height(self):
+        with self.assertRaisesRegex(ValueError, 'height must be > 0'):
+            Rectangle(2, 0, [2, 5])
+
+    def test_error_x(self):
+        with self.assertRaisesRegex(TypeError, 'x must be an integer'):
+            Rectangle(5, 15, {1 : 2}, True)
+
+    def test_error2_x(self):
+        with self.assertRaisesRegex(ValueError, 'x must be >= 0'):
+            Rectangle(5, 15, -5, -2)
