@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """Defines unittests for rectangle.py."""
-import os
+import io
+import sys
 import unittest
+from unittest.mock import patch
 from models.base import Base
 from models.rectangle import Rectangle
 
@@ -167,3 +169,41 @@ class TestRectangle_validator(unittest.TestCase):
     def test_error2_x(self):
         with self.assertRaisesRegex(ValueError, 'x must be >= 0'):
             Rectangle(5, 15, -5, -2)
+
+class TestRectangle_area(unittest.TestCase):
+    """Tests for area of Rectangle class."""
+    def test_small(self):
+        self.assertEqual(Rectangle(5, 10).area(), 50)
+
+    def test_large(self):
+        r = Rectangle(30000000000000000, 2999999999999999999999)
+        self.assertEqual(r.area(), 89999999999999999999970000000000000000)
+
+    def test_arg(self):
+        with self.assertRaises(TypeError):
+            Rectangle(5)
+
+    def test_change(self):
+        r = Rectangle(5, 10)
+        r.height = 5
+        r.width = 2
+        self.assertEqual(r.area(), 10)
+
+class TestRectangle_display(unittest.TestCase):
+    """Tests for display of Rectangle class."""
+    def test_simple_display(self):
+        output = io.StringIO()
+        with patch('sys.stdout', new=output):
+            Rectangle(2, 3).display()
+        self.assertEqual(output.getvalue(), '##\n##\n##\n')
+
+    def test_str(self):
+        output = io.StringIO()
+        with patch('sys.stdout', new=output):
+            Rectangle(2, 3).__str__()
+        msg = '[Rectangle] (1) 0/0 - 2/3'
+        self.assertEqual(output.getvalue(), msg)
+
+    def test_with_args(self):
+        with self.assertRaises(TypeError):
+            Rectangle(2, 3).display(1)
