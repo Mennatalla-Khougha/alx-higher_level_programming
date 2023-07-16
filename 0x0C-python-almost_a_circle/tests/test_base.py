@@ -2,6 +2,7 @@
 """Defines unittests for base.py."""
 from models.base import Base
 import unittest
+from models.rectangle import Rectangle
 
 
 class TestBase_instance(unittest.TestCase):
@@ -39,3 +40,13 @@ class TestBase_instance(unittest.TestCase):
     def test_more_args(self):
         with self.assertRaises(TypeError):
             Base(5, 10)
+
+class TestBase_to_json_string(unittest.TestCase):
+    """Test for the to_json_string method"""
+    def test_rectangle_type(self):
+        r = Rectangle(5, 15)
+        self.assertIsInstance(Base.to_json_string([r.to_dictionary()]), str)
+
+    def test_1_dict(self):
+        r = Rectangle(2, 5)
+        self.assertEqual(len(Base.to_json_string([r.to_dictionary()])), 52)
