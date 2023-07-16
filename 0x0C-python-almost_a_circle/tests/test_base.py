@@ -4,6 +4,7 @@ from models.base import Base
 import unittest
 from models.rectangle import Rectangle
 from models.square import Square
+import os
 
 
 class TestBase_instance(unittest.TestCase):
@@ -50,7 +51,7 @@ class TestBase_to_json_string(unittest.TestCase):
 
     def test_1_dict_r(self):
         r = Rectangle(2, 5)
-        self.assertEqual(len(Base.to_json_string([r.to_dictionary()])), 52)
+        self.assertEqual(len(Base.to_json_string([r.to_dictionary()])), 53)
 
     def test_2_dict_r(self):
         r = Rectangle(2, 5, 10, 12, 3)
@@ -59,7 +60,7 @@ class TestBase_to_json_string(unittest.TestCase):
 
     def test_1_dict_s(self):
         s = Square(2, 5)
-        self.assertEqual(len(Base.to_json_string([s.to_dictionary()])), 38)
+        self.assertEqual(len(Base.to_json_string([s.to_dictionary()])), 39)
 
     def test_2_dict(self):
         s = Square(2, 5, 10, 12)
@@ -83,3 +84,40 @@ class TestBase_to_json_string(unittest.TestCase):
     def test_more_1_args(self):
         with self.assertRaises(TypeError):
             Base.to_json_string([], 3)
+
+class TestBase_save_to_file(unittest.TestCase):
+    """Test for the save to file method"""
+    @classmethod
+    def tearDown(self):
+        files = ['Rectangle.json', 'Square.json', 'Base.json']
+        for f in files:
+            try:
+                os.remove(f)
+            except FileNotFoundError:
+                pass
+
+    def test_1_rectangle(self):
+        r = Rectangle(2, 5)
+        Rectangle.save_to_file([r])
+        with open('Rectangle.json', 'r') as file:
+            self.assertEqual(len(file.read()), 52)
+
+    def test_1_rectangle(self):
+        r = Rectangle(2, 5)
+        r2 = Rectangle(12, 22)
+        Rectangle.save_to_file([r, r2])
+        with open('Rectangle.json', 'r') as file:
+            self.assertEqual(len(file.read()), 106)
+
+    def test_1_square(self):
+        s = Square(2, 5)
+        Square.save_to_file([s])
+        with open('Square.json', 'r') as file:
+            self.assertEqual(len(file.read()), 38)
+
+    def test_1_rectangle(self):
+        s = Square(2, 5)
+        s2 = Square(12, 22)
+        Square.save_to_file([s, s2])
+        with open('Square.json', 'r') as file:
+            self.assertEqual(len(file.read()), 78)
