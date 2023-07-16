@@ -3,6 +3,7 @@
 from models.base import Base
 import unittest
 from models.rectangle import Rectangle
+from models.square import Square
 
 
 class TestBase_instance(unittest.TestCase):
@@ -47,6 +48,38 @@ class TestBase_to_json_string(unittest.TestCase):
         r = Rectangle(5, 15)
         self.assertIsInstance(Base.to_json_string([r.to_dictionary()]), str)
 
-    def test_1_dict(self):
+    def test_1_dict_r(self):
         r = Rectangle(2, 5)
         self.assertEqual(len(Base.to_json_string([r.to_dictionary()])), 52)
+
+    def test_2_dict_r(self):
+        r = Rectangle(2, 5, 10, 12, 3)
+        r2 = Rectangle(3, 12, 5, 2, 1)
+        self.assertEqual(len(Base.to_json_string([r.to_dictionary(), r2.to_dictionary()])), 107)
+
+    def test_1_dict_s(self):
+        s = Square(2, 5)
+        self.assertEqual(len(Base.to_json_string([s.to_dictionary()])), 38)
+
+    def test_2_dict(self):
+        s = Square(2, 5, 10, 12)
+        s2 = Square(14, 5, 22, 70)
+        self.assertEqual(len(Base.to_json_string([s.to_dictionary(), s2.to_dictionary()])), 81)
+
+    def test_empty_list(self):
+        self.assertEqual(Base.to_json_string([]), [])
+
+    def test_None_list(self):
+        self.assertEqual(Base.to_json_string(None), [])
+
+    def test_no_args(self):
+        with self.assertRaises(TypeError):
+            Base.to_json_string()
+
+    def test_1_args(self):
+        with self.assertRaises(TypeError):
+            Base.to_json_string(2)
+
+    def test_more_1_args(self):
+        with self.assertRaises(TypeError):
+            Base.to_json_string([], 3)
