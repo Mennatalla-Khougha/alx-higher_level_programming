@@ -47,3 +47,36 @@ class Base:
             else:
                 dic = [i.to_dictionary() for i in list_objs]
                 file.write(Base.to_json_string(dic))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """Return the list of the json string representation
+
+        Args:
+            json_string (str): json string representation
+        """
+        if json_string is None or len(json_string) == 0:
+            return []
+        else:
+            return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """returns an instance with all attributes already set"""
+        if cls.__name__ == 'Rectangle':
+            dummy = cls(1, 1)
+        elif cls.__name__ == 'Square':
+            dummy = cls(1)
+        dummy.update(**dictionary)
+        return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """Returns a list of instances"""
+        filename = cls.__name__ + '.json'
+        try:
+            with open(filename, 'r') as file:
+                json_string = Base.from_json_string(file.read())
+                return [cls.create(**d) for d in json_string]
+        except:
+            return []
