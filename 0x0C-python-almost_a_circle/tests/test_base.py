@@ -80,6 +80,10 @@ class TestBase_to_json_string(unittest.TestCase):
         expected = len(Base.to_json_string(list_used))
         self.assertEqual(expected, 107)
 
+    def test_S_type(self):
+        s = Square(5, 15)
+        self.assertIsInstance(Base.to_json_string([s.to_dictionary()]), str)
+
     def test_1_dict_s(self):
         s = Square(2, 5)
         self.assertEqual(len(Base.to_json_string([s.to_dictionary()])), 39)
@@ -117,7 +121,7 @@ class TestBase_save_to_file(unittest.TestCase):
         for f in files:
             try:
                 os.remove(f)
-            except FileNotFoundError:
+            except IOError:
                 pass
 
     def test_1_rectangle(self):
