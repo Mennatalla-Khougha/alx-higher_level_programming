@@ -37,7 +37,7 @@ class Square(Rectangle):
         """
         msg = '[Square] (' + str(self.id) + ') '
         msg += str(self.x) + '/' + str(self.y)
-        msg += ' - ' + str(self.size)
+        msg += ' - ' + str(self.width)
         return msg
 
     def update(self, *args, **kwargs):
