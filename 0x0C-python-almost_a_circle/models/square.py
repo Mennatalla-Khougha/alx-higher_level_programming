@@ -38,6 +38,7 @@ class Square(Rectangle):
         return msg
 
     def update(self, *args, **kwargs):
+        """This method to update the class"""
         if args:
             if len(args) >= 1:
                 self.id = args[0]
