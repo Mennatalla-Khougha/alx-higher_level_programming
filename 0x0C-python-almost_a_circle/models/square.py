@@ -4,7 +4,10 @@ from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """This class define the square class"""
+    """This class define the square class
+    Args:
+        Rectangle(class): class to inherit from
+    """
     def __init__(self, size, x=0, y=0, id=None):
         """Initialize the Square class
 
@@ -34,7 +37,7 @@ class Square(Rectangle):
         """
         msg = '[Square] (' + str(self.id) + ') '
         msg += str(self.x) + '/' + str(self.y)
-        msg += ' - ' + str(self.size)
+        msg += ' - ' + str(self.width)
         return msg
 
     def update(self, *args, **kwargs):
