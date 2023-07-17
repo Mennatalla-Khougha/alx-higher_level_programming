@@ -5,6 +5,7 @@ from models.rectangle import Rectangle
 
 class Square(Rectangle):
     """This class define the square class
+
     Args:
         Rectangle(class): class to inherit from
     """
