@@ -22,10 +22,15 @@ class TestBase_instance(unittest.TestCase):
 
     def test_id_None(self):
         b1 = Base(None)
-        b2 = Base()
+        b2 = Base(None)
         self.assertEqual(b1.id, b2.id - 1)
 
     def test_id_no(self):
+        self.assertEqual(Base(5).id, 5)
+
+    def test_id_change(self):
+        b = Base(3)
+        b.id = 5
         self.assertEqual(Base(5).id, 5)
 
     def test_id_0(self):
@@ -33,6 +38,18 @@ class TestBase_instance(unittest.TestCase):
 
     def test_id_str(self):
         self.assertEqual(Base('HI').id, 'HI')
+
+    def test_id_float(self):
+        self.assertEqual(Base(5.5).id, 5.5)
+
+    def test_id_list(self):
+        self.assertEqual(Base([5, 3]).id, [5, 3])
+
+    def test_id_bool(self):
+        self.assertEqual(Base(bool).id, bool)
+
+    def test_id_dict(self):
+        self.assertEqual(Base({5.5: 2}).id, {5.5: 2})
 
     def test_private_attribute(self):
         with self.assertRaises(AttributeError):
