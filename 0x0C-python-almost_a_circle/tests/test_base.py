@@ -74,10 +74,10 @@ class TestBase_to_json_string(unittest.TestCase):
         self.assertEqual(len(Base.to_json_string(list_used)), 81)
 
     def test_empty_list(self):
-        self.assertEqual(Base.to_json_string([]), [])
+        self.assertEqual(Base.to_json_string([]), '[]')
 
     def test_None_list(self):
-        self.assertEqual(Base.to_json_string(None), [])
+        self.assertEqual(Base.to_json_string(None), '[]')
 
     def test_no_args(self):
         with self.assertRaises(TypeError):
