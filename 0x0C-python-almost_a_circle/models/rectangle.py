@@ -98,12 +98,14 @@ class Rectangle(Base):
 
     def __str__(self):
         """Define the string representation of the Rectangle
-        
+
         Returns:
             str: string representation of the Rectangle
         """
-        msg = '[Rectangle] (' + str(self.id) + ') ' + str(self.x) + '/' + str(self.y)
-        msg += ' - ' + str(self.width) + '/' + str(self.height)
+        msg = '[Rectangle] (' + str(self.id) + ') '
+        msg += str(self.x) + '/' + str(self.y)
+        msg += ' - ' + str(self.width) + '/'
+        msg += str(self.height)
         return msg
 
     def update(self, *args, **kwargs):

@@ -96,6 +96,7 @@ class TestRectangle_instance(unittest.TestCase):
         r.y = 5
         self.assertEqual(r.y, 5)
 
+
 class TestRectangle_validator(unittest.TestCase):
     """Tests for validator of Rectangle class."""
     def test_None_width(self):
@@ -164,11 +165,12 @@ class TestRectangle_validator(unittest.TestCase):
 
     def test_error_x(self):
         with self.assertRaisesRegex(TypeError, 'x must be an integer'):
-            Rectangle(5, 15, {1 : 2}, True)
+            Rectangle(5, 15, {1: 2}, True)
 
     def test_error2_x(self):
         with self.assertRaisesRegex(ValueError, 'x must be >= 0'):
             Rectangle(5, 15, -5, -2)
+
 
 class TestRectangle_area(unittest.TestCase):
     """Tests for area of Rectangle class."""
@@ -188,6 +190,7 @@ class TestRectangle_area(unittest.TestCase):
         r.height = 5
         r.width = 2
         self.assertEqual(r.area(), 10)
+
 
 class TestRectangle_display(unittest.TestCase):
     """Tests for display of Rectangle class."""
@@ -246,6 +249,7 @@ class TestRectangle_display(unittest.TestCase):
     def test_str_with_args(self):
         with self.assertRaises(TypeError):
             Rectangle(2, 3).__str__(5)
+
 
 class TestRectangle_update_args(unittest.TestCase):
     """Test for update the args function"""
@@ -345,6 +349,7 @@ class TestRectangle_update_args(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, 'y must be an integer'):
             r.update(12, 5, 2, 2, [5, 12])
 
+
 class TestRectangle_update_kwargs(unittest.TestCase):
     """Test for update the kwargs function"""
     def test_update_1_kwarg(self):
@@ -431,7 +436,7 @@ class TestRectangle_update_kwargs(unittest.TestCase):
     def test_update_invalid_height(self):
         r = Rectangle(2, 10)
         with self.assertRaisesRegex(TypeError, 'height must be an integer'):
-            r.update(height=(2,5))
+            r.update(height=(2, 5))
 
     def test_update_invalid_x(self):
         r = Rectangle(2, 10)
@@ -447,6 +452,7 @@ class TestRectangle_update_kwargs(unittest.TestCase):
         r = Rectangle(2, 10)
         with self.assertRaisesRegex(TypeError, 'x must be an integer'):
             r.update(x='HI', height=False)
+
 
 class TestRectangle_Dict(unittest.TestCase):
     """Test the to_dictionary method"""

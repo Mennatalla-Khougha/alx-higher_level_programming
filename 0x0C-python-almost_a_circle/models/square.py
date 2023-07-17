@@ -3,7 +3,6 @@
 from models.rectangle import Rectangle
 
 
-
 class Square(Rectangle):
     """This class define the square class"""
     def __init__(self, size, x=0, y=0, id=None):
@@ -31,9 +30,11 @@ class Square(Rectangle):
         """String representation of the Square class
 
         Returns:
-            str: string representation 
+            str: string representation
         """
-        msg = '[Square] ({}) {}/{} - {}'.format(self.id, self.x, self.y, self.size)
+        msg = '[Square] (' + str(self.id) + ') '
+        msg += str(self.x) + '/' + str(self.y)
+        msg += ' - ' + str(self.size)
         return msg
 
     def update(self, *args, **kwargs):

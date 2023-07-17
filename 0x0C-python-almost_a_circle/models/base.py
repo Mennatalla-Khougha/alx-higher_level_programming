@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 """This module create a base class for all other classes in this project"""
 import json
+import csv
 
 
 class Base:
     """Define the class Base"""
     __nb_objects = 0
+
     def __init__(self, id=None):
         """Initialize the class Base
 
@@ -78,5 +80,49 @@ class Base:
             with open(filename, 'r') as file:
                 json_string = Base.from_json_string(file.read())
                 return [cls.create(**d) for d in json_string]
-        except:
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Serialize in csv
+
+        Args:
+            list_objs (list): csv list
+        """
+        filename = cls.__name__ + '.csv'
+        with open(filename, 'w', newline='') as file:
+            if list_objs is None or len(list_objs) == 0:
+                file.write('[]')
+            else:
+                write_file = csv.writer(file)
+                for i in list_objs:
+                    if cls.__name__ == 'Rectangle':
+                        write_file.writerow(
+                            [i.id, i.width, i.height, i.x, i.y]
+                            )
+                    else:
+                        write_file.writerow([i.id, i.size, i.x, i.y])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        filename = cls.__name__ + '.csv'
+        try:
+            with open(filename, 'r') as file:
+                read_file = csv.reader(file)
+                create = []
+                for i in read_file:
+                    data = [int(item) for item in i]
+                    if cls.__name__ == 'Rectangle':
+                        create_instance = cls.create(
+                            id=data[0], width=data[1],
+                            height=data[2], x=data[3], y=data[4]
+                            )
+                    elif cls.__name__ == 'Square':
+                        create_instance = cls.create(
+                            id=data[0], size=data[1], x=data[2], y=data[3]
+                        )
+                    create.append(create_instance)
+            return create
+        except FileNotFoundError:
             return []
