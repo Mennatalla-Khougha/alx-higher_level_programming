@@ -403,7 +403,7 @@ class TestBase_save_csv(unittest.TestCase):
     def test_None(self):
         Base.save_to_file_csv(None)
         with open('Base.csv', 'r') as file:
-            self.assertTrue(file.read(), [])
+            self.assertTrue(file.read(), '[]')
 
     def test_empty(self):
         Base.save_to_file_csv([])
