@@ -126,6 +126,10 @@ class TestSquare_size(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, 'x must be an integer'):
             Square(5, {1: 2}, True)
 
+    def test_error_y(self):
+        with self.assertRaisesRegex(TypeError, 'y must be an integer'):
+            Square(5, 2, True)
+
     def test_error2_x(self):
         with self.assertRaisesRegex(ValueError, 'x must be >= 0'):
             Square(5, -5, -2)
