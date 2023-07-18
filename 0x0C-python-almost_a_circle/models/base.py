@@ -2,6 +2,7 @@
 """This module create a base class for all other classes in this project"""
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -126,3 +127,34 @@ class Base:
             return create
         except FileNotFoundError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draw the Rectangle and Square
+
+        Args:
+            list_rectangles (class): rectangle to be drawn
+            list_squares (class): Square to be drawn
+        """
+        turt = turtle.Turtle()
+        turt.color('#355E3B')
+        turt.pensize(5)
+        turt.screen.bgcolor("#EADDCA")
+        turt.penup()
+        for r in list_rectangles:
+            turt.goto(r.x, r.y)
+            turt.pendown()
+            for n in range(2):
+                turt.forward(r.width)
+                turt.left(90)
+                turt.forward(r.height)
+                turt.left(90)
+            turt.penup()
+
+        for s in list_squares:
+            turt.goto(s.x, s.y)
+            turt.pendown()
+            for n in range(4):
+                turt.forward(s.width)
+                turt.right(90)
+            turt.penup()
