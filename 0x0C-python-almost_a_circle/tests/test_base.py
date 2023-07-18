@@ -121,7 +121,7 @@ class TestBase_save_to_file(unittest.TestCase):
         for f in files:
             try:
                 os.remove(f)
-            except IOError:
+            except FileNotFoundError:
                 pass
 
     def test_1_rectangle(self):
@@ -166,6 +166,11 @@ class TestBase_save_to_file(unittest.TestCase):
 
     def test_None(self):
         Square.save_to_file(None)
+        with open('Square.json', 'r') as file:
+            self.assertEqual(file.read(), '[]')
+
+    def test_empty(self):
+        Square.save_to_file([])
         with open('Square.json', 'r') as file:
             self.assertEqual(file.read(), '[]')
 
