@@ -2,6 +2,6 @@
 SELECT `tv`.`title`, `gen`.`genre_id`
 FROM `tv_shows` AS `tv`
 LEFT JOIN `tv_show_genres` AS `gen`
-ON `tv`.`id` = `gen`.`genre_id`
+ON `tv`.`id` = `gen`.`show_id`
 WHERE `gen`.`genre_id` IS NULL
 ORDER BY `tv`.`title`;
