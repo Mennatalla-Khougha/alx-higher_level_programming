@@ -3,4 +3,4 @@ SELECT `cities`.`id`, `cities`.`name`, `states`.`name`
 FROM `cities` 
 JOIN BY `state` 
 ON `cities`.`state_id` = `states`.`id`
-ORDER BY `id`;
+ORDER BY `cities`.`id`;
