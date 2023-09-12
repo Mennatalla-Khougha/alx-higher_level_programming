@@ -1,5 +1,5 @@
 #!/usr/bin/node
-class Rectangle {
+module.exports = class Rectangle{
   width;
   height;
 
@@ -9,4 +9,3 @@ class Rectangle {
   }
 }
 
-module.exports = Rectangle;
