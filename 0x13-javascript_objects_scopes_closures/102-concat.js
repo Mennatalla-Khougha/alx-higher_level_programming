@@ -1,10 +1,10 @@
 #!/usr/bin/node
 const fs = require('fs');
-const { argv } = require('process')
+const { argv } = require('process');
 
-const first = argv[2]
-const second = argv[3]
-const into = argv[4]
+const first = argv[2];
+const second = argv[3];
+const into = argv[4];
 
 fs.readFile(first, (err, date) => {
   if (err) throw err;
