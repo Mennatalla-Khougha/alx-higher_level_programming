@@ -20,6 +20,6 @@ if __name__ == "__main__":
     city = ()
     for row in rows:
         city += row
-    print(*city, sep=", ")    
+    print(*city, sep=", ")
     cur.close()
     db.close()
