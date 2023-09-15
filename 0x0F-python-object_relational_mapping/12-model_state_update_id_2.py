@@ -11,7 +11,7 @@ if __name__ == '__main__':
         @localhost/{argv[3]}', pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
-    row = session.query(State).filter(State.id==2).first()
+    row = session.query(State).filter_by(id=2).first()
     row.name = "New Mexico"
     session.commit()
     session.close()
